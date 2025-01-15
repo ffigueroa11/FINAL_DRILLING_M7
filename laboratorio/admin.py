@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Laboratorio, DirectorGeneral, Producto
 
-# Configuración para mostrar los modelos de manera adecuada
+
 @admin.register(Laboratorio)
 class LaboratorioAdmin(admin.ModelAdmin):
     list_display = ('id', 'nombre')
