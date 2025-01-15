@@ -1,0 +1,25 @@
+<h1>Información de Laboratorios</h1>
+<a href="{% url 'laboratorio_create' %}">Crear nuevo laboratorio</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>País</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for laboratorio in laboratorios %}
+        <tr>
+            <td>{{ laboratorio.nombre }}</td>
+            <td>{{ laboratorio.ciudad }}</td>
+            <td>{{ laboratorio.pais }}</td>
+            <td>
+                <a href="{% url 'laboratorio_edit' laboratorio.id %}">Editar</a>
+                <a href="{% url 'laboratorio_delete' laboratorio.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

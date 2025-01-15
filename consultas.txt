@@ -1,0 +1,34 @@
+python manage.py shell
+from laboratorio.models import Laboratorio, DirectorGeneral, Producto
+
+# Obtener todos los laboratorios
+laboratorios = Laboratorio.objects.all()
+print("Laboratorios:")
+for laboratorio in laboratorios:
+    print(f"- {laboratorio.nombre}")
+
+# Obtener todos los directores generales
+directores = DirectorGeneral.objects.all()
+print("\nDirectores Generales:")
+for director in directores:
+    print(f"- {director.nombre} (Laboratorio: {director.laboratorio})")
+
+# Obtener todos los productos
+productos = Producto.objects.all()
+print("\nProductos:")
+for producto in productos:
+    print(f"- {producto.nombre} (Laboratorio: {producto.laboratorio})")
+
+producto = Producto.objects.get(nombre='Producto 1')
+print(f"El laboratorio del producto '{producto.nombre}' es: {producto.laboratorio.nombre}")
+
+
+productos_ordenados = Producto.objects.order_by('nombre')
+print("\nProductos ordenados por nombre:")
+for producto in productos_ordenados:
+    print(f"Producto: {producto.nombre}, Laboratorio: {producto.laboratorio.nombre}")
+
+print("\nLaboratorios de todos los productos:")
+for producto in Producto.objects.all():
+    print(f"Producto: {producto.nombre}, Laboratorio: {producto.laboratorio.nombre}")
+
